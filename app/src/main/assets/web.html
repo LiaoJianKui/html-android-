@@ -8,6 +8,15 @@
         function javacalljswith(arg){
             document.getElementById("content").innerHTML=("<br\>"+arg);
         }
+        function phoneNumber(){
+             telphone=document.getElementById("number").value;
+        }
+        function msgNumber(){
+             msgTelphone=document.getElementById("msgnumber").value;
+        }
+        function msgContent(){
+             msgText=document.getElementById("msg").value;
+        }
     </script>
 </head>
 <body>
@@ -18,8 +27,14 @@ HTML内容显示<br/>
 <br/>
 <input type="button" value="点击调用java代码并传递参数" onclick="window.android.startFunction('http://blog.csdn.net/Leejizhou')"/>
 <br/>
-<input type="button" value="点击调用拨打电话" onclick="window.android.callPhone('13760454515')"/>
-</br>
 
+<label for="number">请输入电话号码：</label>
+<input type="number" maxlength="11" id="number" onblur="phoneNumber()" required autofocus><br>
+<input type="button" value="点击拨打电话" onclick="window.android.callPhone(telphone)"/><br/>
+<label for="msgnumber">请输入电话号码：</label>
+<input type="number" maxlength="11" id="msgnumber" onblur="msgNumber()" required autofocus><br>
+<label for="msg" >请输入你要发送的短信内容</label></br>
+<textarea cols="40" rows="10" id="msg" onblur="msgContent()"></textarea></br>
+<input type="button" value="点击发送短信" onclick="window.android.sendMessage(msgTelphone,msgText)"/>
 </body>
 </html>
